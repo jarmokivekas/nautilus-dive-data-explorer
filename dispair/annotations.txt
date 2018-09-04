@@ -1,0 +1,31 @@
+
+Controlled descent is controlled.
+There is more than 30 datapoints on that line.
+
+1310 meters in 40 minutes, roughly 33 m/s.
+
+descent: 17:26 to 18:06 (40 min)
+
+
+
+Doing science
+
+Sampling equipment malfunctions, start retrieving vehicles for repair.
+ 
+Fix malfunction on the way.
+ 
+Back to Science! Yess!
+
+Doing more science
+
+
+ascent: 15:40 to 16:54 (20 + 54 == 74)
+1310 meters in 74 minutes, 18 m/s
+
+
+Water temperature just might be related to depth.
+
+
+Interestingly slow decay, I wonder what the cause is?
+
+As far as excuses go 'I'm collecting a SUPR sample' might be oceanography equivalent to 'My code is compiling' in software engineering

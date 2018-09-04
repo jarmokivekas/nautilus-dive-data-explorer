@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src"renderer.js"></script>
+  </head>
+  <body>
+
+
+    <div id="hercules-depth">
+
+    </div>
+    <div id="hercules-hover">
+
+    </div>
+    <div id="eventlog">
+        <ul id="eventlog-list">
+
+        </ul>
+
+
+    <script type="text/javascript">
+
+        var buffer = datasource.buffer
+
+        console.log("parsing json data")
+        var data = []
+        for (var i = 0; i < buffer.length; i++) {
+            try {
+                if(buffer[i] != ""){
+                    var parsed = JSON.parse(buffer[i])
+                    data.push(parsed)
+                }
+            } catch (e) {
+                console.log("got something that is not JSON:" + buffer[i])
+                console.error(e)
+            }
+        }
+        console.log("parsing complete")
+
+
+
+
+
+
+        console.log("collecting hercules depth series")
+        d.hercules.depthseries = data.map(
+            function(elem) {
+                try {
+                    return [
+                        elem.hercules.depth.dtmRecorded,
+                        elem.hercules.depth.value
+                    ]
+                }
+                catch(e){
+                    console.log("error in dataparsing: "+ e)
+                    console.log(elem)
+                    return [null,null]
+                }
+            }
+        );
+
+        console.log(d.hercules.depthseries)
+        d.hercules.depthseries = deduplicate(d.hercules.depthseries)
+
+
+
+
+
+        console.log('collecting eventlog series')
+
+        d.nautilus.eventlogseries = []
+
+        console.log("manipulating")
+        // will be an array of tuples containing array(6)
+        var tmp_eventlogseries = data.map(
+            function(elem) {
+                if (elem == null){
+                    return [null, null]
+                }
+                return [
+                    elem.nautilus.eventlog.dtmRecorded,
+                    elem.nautilus.eventlog.value
+                ]
+            }
+        );
+
+        console.log(tmp_eventlogseries)
+        for (var i = 0; i < tmp_eventlogseries.length; i++) {
+            // loop over every timestamp in the array in the  tuple
+            if (tmp_eventlogseries[i][0] == null || tmp_eventlogseries[i][1] == null) {
+                continue
+            }
+            for (var j = 0; j < tmp_eventlogseries[i][0].length;j++){
+                d.nautilus.eventlogseries.push([
+                    tmp_eventlogseries[i][DTM][j],
+                    tmp_eventlogseries[i][VALUE][j]
+                ])
+            }
+        }
+
+        console.log(d.nautilus.eventlogseries)
+        d.nautilus.eventlogseries = dedup_unsorted_timeseries(d.nautilus.eventlogseries)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        console.log("plotting hercules depth series")
+        Plotly.newPlot(
+            'hercules-depth',
+            [
+                {
+                    x: d.hercules.depthseries.map(elem => elem[DTM]),
+                    y: d.hercules.depthseries.map(elem => elem[VALUE]),
+                    mode: 'lines+markers',
+                    type: 'scatter',
+                    marker: {size: 6}
+                }
+                // ,{
+                //     x: d.nautilus.eventlogseries.map(elem => elem[DTM]),
+                //     y: d.nautilus.eventlogseries.map(elem => 600),
+                //     // yaxis: 'y2'
+                // }
+            ],
+            {
+                yaxis: {
+                    autorange: 'reversed'
+                },
+                hovermode: 'closest'
+            }
+        )
+
+
+
+
+
+
+
+
+
+
+        var d3 = Plotly.d3
+
+        console.log("populating event log list")
+        var eventloglist = d3.select('#eventlog-list')
+        for (var entry of d.nautilus.eventlogseries) {
+            eventloglist.append("li").text(entry[DTM] + " | " + entry[VALUE])
+        }
+
+
+
+        var myPlot = document.getElementById('hercules-depth')
+        var hoverInfo = document.getElementById('hercules-hover')
+
+
+        myPlot.on('plotly_hover', function(event_data){
+            console.log(event_data.points)
+
+            // array of all event timestamps
+            var eventlog_dtms = d.nautilus.eventlogseries.map(elem => elem[DTM])
+            // add hover point and sort
+
+            eventlog_dtms.push(event_data.points[0].x)
+            eventlog_dtms = eventlog_dtms.sort()
+            var idx = findFirstOccurrence(event_data.points[0].x, eventlog_dtms)
+            // fing the location of the hover point, take the depth point just before it
+            // var idx = eventlog_dtms.indexOf(2)
+            // var idx = eventlog_dtms.indexOf(event_data.points[0].x)
+            console.log("search returned index: "+idx)
+            // hoverInfo.innerHTML = infotext.join('');
+            hoverInfo.innerHTML = event_data.points[0].x + " | " + d.nautilus.eventlogseries[idx][VALUE];
+
+        })
+
+        myPlot.on('plotly_unhover', function(event_data){
+            hoverInfo.innerHTML = '';
+        });
+
+
+
+
+    </script>
+    </div>
+  </body>
+</html>

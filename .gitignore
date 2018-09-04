@@ -1,0 +1,5 @@
+# automatic sctipt output directory
+data
+
+# auto-save files for Jupyter notebooks
+.ipynb_checkpoints
