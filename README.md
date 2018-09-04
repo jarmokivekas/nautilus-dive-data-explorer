@@ -139,7 +139,33 @@ A more full-featured alternative to Chronograf.
 - maps
 - many visualizations for non timeseries data
 
+## Install grafana
+
+Dowload and install the .deb from:
+
+```
+https://grafana.com/grafana/download?platform=linux
+```
+
+start the grafana server, by default on localhost:3000:
+```
+sudo service grafana-server start
+```
+
+the default user name and password combinations is `adimn:admin`
+
+
+
 
 ## Grafana dashboard
 
 - TODO: configure public user
+
+
+## Eventlogs as annotations
+
+Grafana does not seem to have a similar time cursor for tabular time series as Chronograf.
+
+Eventlog entries can ba added as annotations from influx
+
+http://docs.grafana.org/reference/annotations/
