@@ -151,8 +151,25 @@ the default user name and password combinations is `adimn:admin`
 
 ## Grafana dashboard
 
-- TODO: configure public user
+The grafana config file is in /etc/grafana/grafana.ini
 
+Set auth.anonymous.enabled to trua, and org_name to the name of the organization with id 1 (called Main Org by default)
+
+```
+[auth.anonymous]
+# enable anonymous access
+enabled = true
+
+# specify organization name that should be used for unauthenticated users
+org_name = Nautilus viewers
+```
+
+For more functionality for Viewers, set the viewers_can_edit key to true.
+
+```
+# Viewers can edit/inspect dashboard settings in the browser. But not save the dashboard.
+;viewers_can_edit = false
+```
 
 ## Eventlogs as annotations
 
