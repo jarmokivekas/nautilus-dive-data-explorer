@@ -4,9 +4,9 @@
 
 This repository contains a few work-in-progress projects exploring the dive data form [E/V Nautilus dives](http://nautiluslive.org)
 
-The most up-to-date version of the data explorer is based on Grafana and InfluxDB. The full dashboard is not yet publicly hoste, [but it is possible to publish snapshots such as this.](https://snapshot.raintank.io/dashboard/snapshot/fIOL7wUBJWGSWxLpMg4lXCxteT14uaNn?refresh=30s&orgId=2)
+The most up-to-date version of the data explorer is based on Grafana and InfluxDB. The full dashboard is not yet publicly hoste, [but it is possible to publish snapshots such as this.](https://snapshot.raintank.io/dashboard/snapshot/9c2aKYuLh8wq4Y3nFI1Zj08gCgwiVMGs)
 
-[![./img/dashboard-screenshots.png](./img/dashboard-screenshots.png)](https://snapshot.raintank.io/dashboard/snapshot/fIOL7wUBJWGSWxLpMg4lXCxteT14uaNn?refresh=30s&orgId=2)
+[![img/dashboard-screenshot.png](img/dashboard-screenshot.png)](https://snapshot.raintank.io/dashboard/snapshot/9c2aKYuLh8wq4Y3nFI1Zj08gCgwiVMGs)
 
 # About The Data
 
