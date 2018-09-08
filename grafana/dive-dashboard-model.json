@@ -33,18 +33,670 @@
   "links": [],
   "panels": [
     {
+      "content": "# Tips\n\n- press V when hovering the mouse on a panel to view it fullscreen\n- click and drag on any graph area to zoom in on the time axis\n- double click graph to zoom out\n- click the *nautilus-eventlogs* checkbox at the top to toggle eventlogs\n- views shared on snapshot.raintank.io lack some functionality from the live view",
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 0,
+        "y": 0
+      },
+      "id": 11,
+      "links": [],
+      "mode": "markdown",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "content": "# Scientific Record\n\nThe data presented on NautilusLive.org is not the\nfull/complete scientific record. Please go to http://www.oet.org for\ninformation on accessing the archived dataset.",
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 7,
+        "y": 0
+      },
+      "id": 4,
+      "links": [],
+      "mode": "markdown",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "content": "# Data Source\n\nThe machine-readable JSON data object for the data is located at [http://nautiluslive.org/sites/default/files/nautilus-vehicle-data.json](http://nautiluslive.org/sites/default/files/nautilus-vehicle-data.json).\nThis is the same place the data below the video stream on NautilusLive comes from.  ",
+      "gridPos": {
+        "h": 5,
+        "w": 9,
+        "x": 14,
+        "y": 0
+      },
+      "id": 17,
+      "links": [],
+      "mode": "markdown",
+      "title": "",
+      "transparent": true,
+      "type": "text"
+    },
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
+      "decimals": null,
       "description": "The depth of ROV Hercules and Argus",
       "fill": 1,
       "gridPos": {
         "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "id": 9,
+      "interval": "",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 3,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Hercules depth",
+          "groupBy": [
+            {
+              "params": [
+                "10s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "depth"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "hercules"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Hercules Depth",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "lengthm",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "columns": [],
+      "datasource": null,
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 9,
         "w": 16,
         "x": 0,
-        "y": 0
+        "y": 15
+      },
+      "id": 7,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": 0,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "link": false,
+          "pattern": "Time",
+          "type": "date"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "alias": "Eventlog",
+          "groupBy": [],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "eventlog"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
+      "title": "Dive Eventlog",
+      "transform": "table",
+      "transparent": false,
+      "type": "table"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Ambient and Probe temperature readings",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 15
+      },
+      "id": 5,
+      "interval": "",
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "hideEmpty": false,
+        "hideZero": false,
+        "max": false,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 2,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 3,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "alias": "ambient temperature",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temp"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "hercules"
+            }
+          ]
+        },
+        {
+          "alias": "probe temperature",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "none"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "tempProbe"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "hercules"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Water temperature",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "celsius",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Wind heading measured by Nautilus",
+      "fill": 1,
+      "gridPos": {
+        "h": 8,
+        "w": 9,
+        "x": 0,
+        "y": 24
+      },
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": false,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 1,
+      "points": true,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Wind Heading",
+          "groupBy": [],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "windHeading"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "nautilus"
+            }
+          ]
+        },
+        {
+          "alias": "Average Wind Heading",
+          "groupBy": [],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "windHeading"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "10"
+                ],
+                "type": "moving_average"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "nautilus"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Wind Heading",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "degree",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "Nautilus stays in one place using dynamic positioning during dives",
+      "fill": 1,
+      "gridPos": {
+        "h": 6,
+        "w": 15,
+        "x": 9,
+        "y": 24
+      },
+      "id": 16,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Nautilus Heading",
+          "groupBy": [],
+          "measurement": "vessel-status",
+          "orderByTime": "ASC",
+          "policy": "autogen",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "heading"
+                ],
+                "type": "field"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "vessel",
+              "operator": "=",
+              "value": "nautilus"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Nautilus Heading",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "degree",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": null,
+      "description": "The depth of ROV Hercules and Argus. Argus hangs down from Nautilus on a tether, Hercules is in turn tethered to Argus but can move  around within the reach of its tether.",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 15,
+        "x": 9,
+        "y": 30
       },
       "id": 2,
       "interval": "",
@@ -208,58 +860,42 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": null,
-      "description": "Ambient and Probe temperature readings",
+      "description": "The wind speed measured by instruments on Nautilus",
       "fill": 1,
       "gridPos": {
-        "h": 10,
-        "w": 8,
-        "x": 16,
-        "y": 0
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 32
       },
-      "id": 5,
-      "interval": "",
+      "id": 13,
       "legend": {
-        "alignAsTable": false,
         "avg": false,
         "current": false,
-        "hideEmpty": false,
-        "hideZero": false,
         "max": false,
         "min": false,
-        "rightSide": false,
         "show": true,
         "total": false,
         "values": false
       },
-      "lines": true,
-      "linewidth": 2,
+      "lines": false,
+      "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
       "percentage": false,
-      "pointradius": 3,
-      "points": false,
+      "pointradius": 1,
+      "points": true,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {}
+      ],
       "spaceLength": 10,
       "stack": false,
-      "steppedLine": true,
+      "steppedLine": false,
       "targets": [
         {
-          "alias": "ambient temperature",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
+          "alias": "Wind Speed",
+          "groupBy": [],
           "measurement": "vessel-status",
           "orderByTime": "ASC",
           "policy": "autogen",
@@ -269,13 +905,15 @@
             [
               {
                 "params": [
-                  "temp"
+                  "windSpeed"
                 ],
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
+                "params": [
+                  "* 0.514444"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -283,26 +921,13 @@
             {
               "key": "vessel",
               "operator": "=",
-              "value": "hercules"
+              "value": "nautilus"
             }
           ]
         },
         {
-          "alias": "probe temperature",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
-            }
-          ],
+          "alias": "Mean Wind Speed",
+          "groupBy": [],
           "measurement": "vessel-status",
           "orderByTime": "ASC",
           "policy": "autogen",
@@ -312,13 +937,21 @@
             [
               {
                 "params": [
-                  "tempProbe"
+                  "windSpeed"
                 ],
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
+                "params": [
+                  10
+                ],
+                "type": "moving_average"
+              },
+              {
+                "params": [
+                  "*0.514444"
+                ],
+                "type": "math"
               }
             ]
           ],
@@ -326,7 +959,7 @@
             {
               "key": "vessel",
               "operator": "=",
-              "value": "hercules"
+              "value": "nautilus"
             }
           ]
         }
@@ -334,13 +967,12 @@
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "ROV Depth",
+      "title": "Wind Speed",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
-      "transparent": false,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -351,8 +983,8 @@
       },
       "yaxes": [
         {
-          "format": "celsius",
-          "label": "",
+          "format": "velocityms",
+          "label": null,
           "logBase": 1,
           "max": null,
           "min": null,
@@ -364,100 +996,16 @@
           "logBase": 1,
           "max": null,
           "min": null,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "columns": [],
-      "datasource": null,
-      "fontSize": "100%",
-      "gridPos": {
-        "h": 7,
-        "w": 16,
-        "x": 0,
-        "y": 10
-      },
-      "id": 7,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": false
-      },
-      "styles": [
-        {
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "link": false,
-          "pattern": "Time",
-          "type": "date"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 2,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [
-        {
-          "alias": "Eventlog",
-          "groupBy": [],
-          "measurement": "vessel-status",
-          "orderByTime": "ASC",
-          "policy": "autogen",
-          "refId": "A",
-          "resultFormat": "table",
-          "select": [
-            [
-              {
-                "params": [
-                  "eventlog"
-                ],
-                "type": "field"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "Dive Eventlog",
-      "transform": "table",
-      "transparent": false,
-      "type": "table"
-    },
-    {
-      "content": "# Dive Data\n\nThe data presented here or on NautilusLive.org is not the\nfull/complete scientific record. Please go to http://www.oet.org for\ninformation on accessing the archived dataset.",
-      "gridPos": {
-        "h": 4,
-        "w": 8,
-        "x": 16,
-        "y": 10
-      },
-      "id": 4,
-      "links": [],
-      "mode": "markdown",
-      "title": "",
-      "transparent": true,
-      "type": "text"
     }
   ],
-  "refresh": false,
+  "refresh": "30s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -465,8 +1013,8 @@
     "list": []
   },
   "time": {
-    "from": "2018-09-03T21:33:29.100Z",
-    "to": "2018-09-03T22:14:35.428Z"
+    "from": "now-1h",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -496,5 +1044,5 @@
   "timezone": "",
   "title": "Nautilus dive data explorer",
   "uid": "H7uIBYhiz",
-  "version": 6
+  "version": 14
 }

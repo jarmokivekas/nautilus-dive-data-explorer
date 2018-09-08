@@ -4,6 +4,10 @@
 
 This repository contains a few work-in-progress projects exploring the dive data form [E/V Nautilus dives](http://nautiluslive.org)
 
+The most up-to-date version of the data explorer is based on Grafana and InfluxDB. The full dashboard is not yet publicly hoste, [but it is possible to publish snapshots such as this.](https://snapshot.raintank.io/dashboard/snapshot/fIOL7wUBJWGSWxLpMg4lXCxteT14uaNn?refresh=30s&orgId=2)
+
+[![./img/dashboard-screenshots.png](./img/dashboard-screenshots.png)](https://snapshot.raintank.io/dashboard/snapshot/fIOL7wUBJWGSWxLpMg4lXCxteT14uaNn?refresh=30s&orgId=2)
+
 # About The Data
 
 The data presented on NautilusLive.org is not the
@@ -15,20 +19,6 @@ The used dive data is available as a JSON object at
 ```
 http://nautiluslive.org/sites/default/files/nautilus-vehicle-data.json
 ```
-
-# Organization of this repository
-
-data
-dispair
-fetch-nautilus-json-data.py
-img
-osm.html
-plot.py
-plots-and-data-manipulation.ipynb
-README.md
-static-web-plot
-test-nautilus-json-data.py
-webview
 
 
 
@@ -123,6 +113,7 @@ Chronograf
 - timeseries plots
 - timestamped lists
 - move and resize plots at will
+- uses local browser time, not UTC
 
 
 - Very little cusomizatbility in plot types (only suitable for timeseries)
@@ -137,6 +128,7 @@ A more full-featured alternative to Chronograf.
 - timeseries plots
 - timestamped lists
 - maps
+- supports UTC time
 - many visualizations for non timeseries data
 
 ## Install grafana
@@ -166,6 +158,6 @@ the default user name and password combinations is `adimn:admin`
 
 Grafana does not seem to have a similar time cursor for tabular time series as Chronograf.
 
-Eventlog entries can ba added as annotations from influx
+Eventlog entries can be added as annotations from influx
 
 http://docs.grafana.org/reference/annotations/
