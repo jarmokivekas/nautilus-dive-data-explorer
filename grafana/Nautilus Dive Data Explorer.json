@@ -1,8 +1,50 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_NAUTILUS-AUTOFETCH",
+      "label": "nautilus-autofetch",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "5.2.3"
+    },
+    {
+      "type": "panel",
+      "id": "graph",
+      "name": "Graph",
+      "version": "5.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": "5.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "text",
+      "name": "Text",
+      "version": "5.0.0"
+    }
+  ],
   "annotations": {
     "list": [
       {
-        "datasource": "nautilus-autofetch",
+        "datasource": "${DS_NAUTILUS-AUTOFETCH}",
         "enable": true,
         "hide": false,
         "iconColor": "#e0752d",
@@ -20,7 +62,9 @@
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
+        "limit": 100,
         "name": "Annotations & Alerts",
+        "showIn": 0,
         "type": "dashboard"
       }
     ]
@@ -29,8 +73,37 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 2,
-  "id": 1,
-  "links": [],
+  "id": null,
+  "links": [
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "Data Explorer GitHub Page",
+      "tooltip": "This project is open source software",
+      "type": "link",
+      "url": "https://github.com/jarmokivekas/nautilus-dive-data-explorer"
+    },
+    {
+      "icon": "external link",
+      "tags": [],
+      "targetBlank": true,
+      "title": "Nautiluslive.org",
+      "tooltip": "Open the live video stream",
+      "type": "link",
+      "url": "http://nautiluslive.org/"
+    },
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "keepTime": false,
+      "tags": [
+        "nautilus"
+      ],
+      "title": "Switch dashboard view",
+      "type": "dashboards"
+    }
+  ],
   "panels": [
     {
       "content": "# Tips\n\n- press V when hovering the mouse on a panel to view it fullscreen\n- click and drag on any graph area to zoom in on the time axis\n- double click graph to zoom out\n- click the *nautilus-eventlogs* checkbox at the top to toggle eventlogs\n- views shared on snapshot.raintank.io lack some functionality from the live view",
@@ -82,7 +155,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "decimals": null,
       "description": "The depth of ROV Hercules and Argus",
       "fill": 1,
@@ -207,7 +280,7 @@
     },
     {
       "columns": [],
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "fontSize": "100%",
       "gridPos": {
         "h": 9,
@@ -279,7 +352,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "description": "Ambient and Probe temperature readings",
       "fill": 1,
       "gridPos": {
@@ -449,7 +522,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "description": "Wind heading measured by Nautilus",
       "fill": 1,
       "gridPos": {
@@ -585,7 +658,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "description": "Nautilus stays in one place using dynamic positioning during dives",
       "fill": 1,
       "gridPos": {
@@ -689,7 +762,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "description": "The depth of ROV Hercules and Argus. Argus hangs down from Nautilus on a tether, Hercules is in turn tethered to Argus but can move  around within the reach of its tether.",
       "fill": 1,
       "gridPos": {
@@ -859,7 +932,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": "${DS_NAUTILUS-AUTOFETCH}",
       "description": "The wind speed measured by instruments on Nautilus",
       "fill": 1,
       "gridPos": {
@@ -1005,10 +1078,12 @@
       }
     }
   ],
-  "refresh": "30s",
+  "refresh": false,
   "schemaVersion": 16,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "nautilus"
+  ],
   "templating": {
     "list": []
   },
@@ -1041,8 +1116,8 @@
       "30d"
     ]
   },
-  "timezone": "",
-  "title": "Nautilus dive data explorer",
+  "timezone": "utc",
+  "title": "Nautilus Dive Data Explorer",
   "uid": "H7uIBYhiz",
-  "version": 14
+  "version": 20
 }
