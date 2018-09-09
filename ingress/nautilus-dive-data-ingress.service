@@ -1,0 +1,9 @@
+[Unit]
+Description=Nautilus Dive Data Ingress
+
+[Service]
+Type=simple
+ExecStart=/opt/nautilus-dive-data-explorer/ingress/nautilus-dive-data-ingress.py
+
+[Install]
+WantedBy=multi-user.target
